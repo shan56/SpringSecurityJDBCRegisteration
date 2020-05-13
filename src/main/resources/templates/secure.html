@@ -8,8 +8,9 @@
 <body>
 <h2>Secure Page</h2>
 <h4>Name: </h4>
-<p th:text="${user.firstName}"></p>
+<p>[[${user.firstName}]] [[${user.lastName}]]</p>
 <br/>
+
 <h4>Email:</h4>
 <p th:text="${user.email}"></p>
 </body>

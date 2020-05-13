@@ -1,7 +1,9 @@
 package com.example.demo;
 
+import org.springframework.lang.NonNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 @Entity
@@ -12,26 +14,32 @@ public class User {
     private long id;
 
     @Column (name = "username", nullable = false)
+    @NotEmpty
+    @NonNull
     private String username;
 
     @Column (name = "email")
+    @NotEmpty
+    @NonNull
     private String email;
 
     @Column (name = "password")
+    @NotEmpty
+    @NonNull
     private String password;
 
     @Column (name = "first_name")
+    @NotEmpty
+    @NonNull
     private String firstName;
 
     @Column (name = "last_name")
+    @NotEmpty
+    @NonNull
     private String lastName;
 
     @Column (name = "enabled")
     private boolean enabled;
-
-
-    @OneToMany(mappedBy="user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Role> roles;
 
     public User() {
     }
@@ -45,7 +53,6 @@ public class User {
         this.lastName = lastName;
         this.enabled = enabled;
     }
-
 
     public long getId() {
         return id;
@@ -104,12 +111,5 @@ public class User {
         this.enabled = enabled;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
 
 }
